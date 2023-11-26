@@ -19,22 +19,41 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
 } //_CODE_:window1:515186:
 
 public void Materials(GDropList source, GEvent event) { //_CODE_:Material:261635:
- // materialChosen = Material.getSelectedText();
-  firstHouse.updateHouse(Material.getSelectedText(),FoundationStrength.getValueI());
+  updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
 } //_CODE_:Material:261635:
 
 public void foundationStrengthSlider(GSlider source, GEvent event) { //_CODE_:FoundationStrength:542419:
-//  foundationStrength = FoundationStrength.getValueI();
-  firstHouse.updateHouse(Material.getSelectedText(),FoundationStrength.getValueI());
+  updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
 } //_CODE_:FoundationStrength:542419:
 
-public void materialLabelEvent(GTextField source, GEvent event) { //_CODE_:materialLabel:489327:
-  
-} //_CODE_:materialLabel:489327:
+public void shelterTypeDroplist(GDropList source, GEvent event) { //_CODE_:shelterType:963827:
 
-public void foundationStrengthLabelEvent(GTextField source, GEvent event) { //_CODE_:foundationStrengthLabel:391610:
+  if(shelterType.getSelectedText().equals("Tent")) 
+    shelterChosen = 0;
   
-} //_CODE_:foundationStrengthLabel:391610:
+  
+  else if(shelterType.getSelectedText().equals("House")) 
+    shelterChosen = 1;
+  
+  
+  else if(shelterType.getSelectedText().equals("3 - Story")) 
+    shelterChosen = 2;
+  
+  
+  else 
+    shelterChosen = 3;
+    
+  updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
+  
+} //_CODE_:shelterType:963827:
+
+public void precipitationSlider(GSlider source, GEvent event) { //_CODE_:precipitation:561444:
+  precipitationValue = precipitation.getValueF();
+} //_CODE_:precipitation:561444:
+
+public void temperatureSlider(GSlider source, GEvent event) { //_CODE_:temperature:717298:
+  temp = temperature.getValueI();
+} //_CODE_:temperature:717298:
 
 
 
@@ -45,27 +64,63 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Window title", 0, 0, 240, 300, JAVA2D);
+  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 400, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
-  Material = new GDropList(window1, 69, 39, 90, 120, 5, 10);
+  Material = new GDropList(window1, 134, 98, 90, 120, 5, 10);
   Material.setItems(loadStrings("list_261635"), 2);
   Material.addEventHandler(this, "Materials");
-  FoundationStrength = new GSlider(window1, 40, 111, 149, 40, 10.0);
-  FoundationStrength.setLimits(50.0, 0.0, 100.0);
-  FoundationStrength.setNumberFormat(G4P.DECIMAL, 2);
-  FoundationStrength.setLocalColorScheme(GCScheme.GOLD_SCHEME);
+  FoundationStrength = new GSlider(window1, 244, 88, 149, 40, 10.0);
+  FoundationStrength.setShowLimits(true);
+  FoundationStrength.setLimits(50, 0, 100);
+  FoundationStrength.setNumberFormat(G4P.INTEGER, 0);
   FoundationStrength.setOpaque(false);
   FoundationStrength.addEventHandler(this, "foundationStrengthSlider");
-  materialLabel = new GTextField(window1, 58, 3, 120, 30, G4P.SCROLLBARS_NONE);
-  materialLabel.setText("Material");
-  materialLabel.setOpaque(false);
-  materialLabel.addEventHandler(this, "materialLabelEvent");
-  foundationStrengthLabel = new GTextField(window1, 56, 75, 120, 30, G4P.SCROLLBARS_NONE);
-  foundationStrengthLabel.setText("Foundation Strength");
-  foundationStrengthLabel.setOpaque(false);
-  foundationStrengthLabel.addEventHandler(this, "foundationStrengthLabelEvent");
+  shelterType = new GDropList(window1, 12, 97, 90, 100, 4, 10);
+  shelterType.setItems(loadStrings("list_963827"), 1);
+  shelterType.addEventHandler(this, "shelterTypeDroplist");
+  label1 = new GLabel(window1, 125, 6, 133, 26);
+  label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label1.setText("Shelter Variables");
+  label1.setOpaque(true);
+  label2 = new GLabel(window1, 140, 52, 80, 20);
+  label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label2.setText("Material");
+  label2.setOpaque(false);
+  label3 = new GLabel(window1, 14, 51, 83, 20);
+  label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label3.setText("Shelter Type");
+  label3.setOpaque(false);
+  label4 = new GLabel(window1, 261, 50, 123, 21);
+  label4.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label4.setText("Foundation Strength");
+  label4.setOpaque(false);
+  label5 = new GLabel(window1, 117, 175, 146, 31);
+  label5.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label5.setText("Environment Variables");
+  label5.setOpaque(true);
+  label6 = new GLabel(window1, 53, 227, 80, 20);
+  label6.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label6.setText("Precipitation");
+  label6.setOpaque(false);
+  label7 = new GLabel(window1, 236, 226, 111, 24);
+  label7.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label7.setText("Temperature °C");
+  label7.setOpaque(false);
+  precipitation = new GSlider(window1, 30, 264, 129, 39, 10.0);
+  precipitation.setShowLimits(true);
+  precipitation.setLimits(0.0, 0.0, 50.0);
+  precipitation.setNumberFormat(G4P.DECIMAL, 2);
+  precipitation.setOpaque(false);
+  precipitation.addEventHandler(this, "precipitationSlider");
+  temperature = new GSlider(window1, 224, 264, 139, 38, 10.0);
+  temperature.setShowValue(true);
+  temperature.setShowLimits(true);
+  temperature.setLimits(20, -10, 30);
+  temperature.setNumberFormat(G4P.INTEGER, 0);
+  temperature.setOpaque(false);
+  temperature.addEventHandler(this, "temperatureSlider");
   window1.loop();
 }
 
@@ -74,5 +129,13 @@ public void createGUI(){
 GWindow window1;
 GDropList Material; 
 GSlider FoundationStrength; 
-GTextField materialLabel; 
-GTextField foundationStrengthLabel; 
+GDropList shelterType; 
+GLabel label1; 
+GLabel label2; 
+GLabel label3; 
+GLabel label4; 
+GLabel label5; 
+GLabel label6; 
+GLabel label7; 
+GSlider precipitation; 
+GSlider temperature; 

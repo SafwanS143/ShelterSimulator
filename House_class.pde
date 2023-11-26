@@ -1,24 +1,11 @@
-class House {
-  // Fields
-  String material;
-  int foundationStrength;
-  float overallStrength;
-  color houseColour;
-
-  int numPieces = 18; //Fields for broken house
-  float[] size = new float[numPieces];
-  PVector[] pieces = new PVector[numPieces];
-  PVector[] velocity = new PVector[numPieces];
+class House extends Shelter{
+  
   
   House(String m, int fs) {
-    this.material = m;
-    this.foundationStrength = fs;
-      
-    this.overallStrength = 70.0 * 0.6 + this.foundationStrength * 0.4;
+    super(m, fs);
     
-    this.houseColour = color(188, 74, 60);
-    
-    for (int i = 0; i < numPieces; i++) { //Broken house pieces
+    //Broken house pieces
+    for (int i = 0; i < numPieces; i++) { 
       pieces[i] = new PVector(random(200, 350), random(180, 380));
       size[i] = random(40, 55);
       velocity[i] = new PVector(0, random(10, 15));
@@ -28,7 +15,7 @@ class House {
   
   // Methods 
   void drawHouse() {
-    fill(this.houseColour);
+    fill(this.colour);
     rect(200, 300, 200, 150);
     triangle(170, 300, 300, 200, 430, 300);
     
@@ -46,7 +33,7 @@ class House {
   
   void drawBrokenHouse() {
     for (int i = 0; i < numPieces; i++){ //Draws broken pieces
-      fill(this.houseColour);
+      fill(this.colour);
       square(pieces[i].x, pieces[i].y, size[i]);  
     }
     for (int i = 0; i < numPieces; i++) { //Animates broken pieces collapsing
@@ -57,36 +44,6 @@ class House {
   }
   
   void updateHouse(String m, int fs) {
-    this.material = m;
-    this.foundationStrength = fs;
-    
-    float s;
-    if(material.equals("Metal")) {
-      s = 90.0;
-      this.houseColour = color(197);
-    }
-      
-    else if (material.equals("Concrete")) {
-      s = 80.0;
-      this.houseColour = color(105);
-    }
-    
-    else if (material.equals("Brick")) {
-      s = 70.0;
-      this.houseColour = color(188, 74, 60);
-    }      
-    
-    else if (material.equals("Wood")) {
-      s = 50.0;
-      this.houseColour = color(202, 164, 104);
-    }
-    
-    // Must be drywall
-    else {
-      s = 40.0;
-      this.houseColour = color(196, 164, 132);
-    }
-      
-    this.overallStrength = s * 0.6 + this.foundationStrength * 0.4;
+    super.updateShelter(m, fs);
   }
 }
