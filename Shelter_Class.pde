@@ -19,6 +19,7 @@ class Shelter {
     this.overallStrength = 70.0 * 0.6 + this.foundationStrength * 0.4;
     
     this.colour = color(188, 74, 60);
+    
   }
   
   void updateShelter(String m, int fs) {
@@ -43,7 +44,7 @@ class Shelter {
     
     else if (material.equals("Wood")) {
       s = 50.0;
-      this.colour = color(202, 164, 104);
+      this.colour = color(191, 110, 48);
     }
     
     // Must be drywall

@@ -3,7 +3,7 @@ class House extends Shelter{
   
   House(String m, int fs) {
     super(m, fs);
-    
+
     //Broken house pieces
     for (int i = 0; i < numPieces; i++) { 
       pieces[i] = new PVector(random(200, 350), random(180, 380));

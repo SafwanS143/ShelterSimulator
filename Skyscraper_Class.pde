@@ -52,7 +52,7 @@ class Skyscraper extends Shelter {
       square(pieces[i].x, pieces[i].y, size[i]);  
     }
     for (int i = 0; i < numPieces; i++) { //Animates broken pieces collapsing
-      if (pieces[i].y < 475) {
+      if (pieces[i].y < 500) {
         pieces[i].add(velocity[i]);   
       }
     }

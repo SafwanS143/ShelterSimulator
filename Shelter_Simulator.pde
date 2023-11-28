@@ -2,6 +2,8 @@ import g4p_controls.*;
 
 // Global Variables
 int shelterChosen = 1;
+int naturalDisasterChosen = 0;
+boolean disasterSelected = false;
 float precipitationValue = 0;
 int temp = 20;
 color rainColour = color(0, 0, 255);
@@ -11,6 +13,7 @@ PVector rainSpeed = new PVector(-5, 20);
 Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House firstHouse = new House("Brick", 50);
 ThreeStory threeStory = new ThreeStory("Brick", 50);
+Tent tent = new Tent(50);
 
 
 void setup() {
@@ -21,13 +24,16 @@ void setup() {
 
 void draw() {
   background(135, 206, 235);
+  setVisibility();
+  
   if(temp <= 0)
-    fill(194, 209, 196);
+    fill(247, 245, 245); //Snowy ground
   else 
-    fill(124, 252, 0);
+    fill(108, 209, 0);
   rect(-1, 350, 601, 600); //Ground
   
   if(shelterChosen == 0) {
+    tent.drawTent();
   }
   
   else if(shelterChosen == 1) {
@@ -94,4 +100,27 @@ void drawRain() {
         rain.remove(i);
     }
   }
+}
+
+void setVisibility() { //Sets visibility of GUI buttons
+  if (disasterSelected) {
+    disasterSeverity.setVisible(true);  
+    label9.setVisible(true);
+  }
+  
+  else {
+    disasterSeverity.setVisible(false);  
+    label9.setVisible(false);
+  }
+  
+  if (shelterChosen == 0) {
+    Material.setVisible(false);
+    label2.setVisible(false);
+  }
+  
+  else {
+    Material.setVisible(true);
+    label2.setVisible(true);
+  }
+
 }
