@@ -92,14 +92,15 @@ void updateBuilding(String a, int b) {
 void drawRain() {
   
   if(random(0, 50) <= precipitationValue) {
-    rain.add(new Raindrop(rainColour));
+    for(int i = 0; i < 2; i ++)
+      rain.add(new Raindrop(rainColour));
   }
   
   if(rain.size() > 0) {
     for(Raindrop r: rain) {
       if(temp > 0) {
         r.raindropColourUpdate(0,0,255);
-        rainSpeed = new PVector(-5, 10 + (precipitationValue / 5.0));
+        rainSpeed = new PVector(int(-(2 + precipitationValue/(100.0/3.0))), 10 + (precipitationValue / 5.0));
       }
       
       else {
