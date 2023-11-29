@@ -49,6 +49,15 @@ void earthquake() {
   }
 }
 
-void tsunami() {}
+void tsunami() {
+  image(tsunami, xTsunami, yTsunami);
+  
+  if (xTsunami < 250)
+    yTsunami -= 3;  
+  else
+   yTsunami += 3;
+  
+  xTsunami += tsunamiSpeed; 
+}
 
 void tornado() {}

@@ -14,6 +14,11 @@ boolean play = false;
 int timer = 0;
 int fps = 60;
 
+float xTsunami = -300;
+float yTsunami = 200;
+float tsunamiSpeed = 12;
+PImage tsunami; 
+
 Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House firstHouse = new House("Brick", 50);
 ThreeStory threeStory = new ThreeStory("Brick", 50);
@@ -24,7 +29,10 @@ void setup() {
   size(600, 600);
   frameRate(fps);
   
+  tsunami = loadImage("wave.png");
+  
   createGUI();
+
 }
 
 void draw() {
@@ -131,5 +139,4 @@ void setVisibility() { //Sets visibility of GUI buttons
     label2.setVisible(true);
     label4.setText("Foundation Strength");
   }
-
 }
