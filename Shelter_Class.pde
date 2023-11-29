@@ -5,6 +5,7 @@ class Shelter {
   float overallStrength;
   color colour;
   int endHeight;
+  PVector pos;
 
   // Broken Shelter Fields
   int numPieces = 18;

@@ -9,6 +9,8 @@ class Skyscraper extends Shelter {
       size[i] = random(35, 45);
       velocity[i] = new PVector(random(-3, 2),random(13, 18));
     }  
+    
+    this.pos = new PVector(270, 75);
   }
   
   
@@ -16,18 +18,18 @@ class Skyscraper extends Shelter {
   void drawSkyscraper() {
     //Building
     fill(this.colour);
-    triangle(290, 75, 325, 75, 308, 5);
-    rect(270, 75, 75, 25);
-    rect(260, 100, 95, 75);
-    rect(250, 175, 115, 375);
+    triangle(this.pos.x+20, this.pos.y, this.pos.x+55, this.pos.y, this.pos.x+38, this.pos.y-70);
+    rect(this.pos.x, this.pos.y, 75, 25);
+    rect(this.pos.x-10, this.pos.y+25, 95, 75);
+    rect(this.pos.x-20, this.pos.y+100, 115, 375);
     fill(199, 242, 240);
     
     //Windows
-    int y = 195;
-    int y2 = 110;
+    int y = int(this.pos.y+120);
+    int y2 = int(this.pos.y+35);
     
     for (int i = 0; i < 10; i++) {
-      int x = 262;
+      int x = int(this.pos.x-8);
       for (int j = 0; j < 3; j++) {
         square(x, y, 20);  
         x += 35;
@@ -37,7 +39,7 @@ class Skyscraper extends Shelter {
     
     //Windows for top part
     for (int i = 0; i < 2; i++) {
-      int x2 = 270;
+      int x2 = int(this.pos.x);
       for (int j = 0; j < 3; j++) {
         rect(x2, y2, 16, 20);  
         x2 += 30;

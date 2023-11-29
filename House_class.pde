@@ -10,25 +10,27 @@ class House extends Shelter{
       size[i] = random(40, 55);
       velocity[i] = new PVector(0, random(10, 15));
     }
+    
+    this.pos = new PVector(200, 300);
   }
   
   
   // Methods 
   void drawHouse() {
     fill(this.colour);
-    rect(200, 300, 200, 150);
-    triangle(170, 300, 300, 200, 430, 300);
+    rect(this.pos.x, this.pos.y, 200, 150);
+    triangle(this.pos.x-30, this.pos.y, this.pos.x+100, this.pos.y-100, this.pos.x+230, this.pos.y);
     
     //Door
     fill(209, 121, 56);
-    rect(270, 350, 60, 100);
+    rect(this.pos.x+70, this.pos.y+50, 60, 100);
     fill(250, 181, 20);
-    circle(280, 400, 10);
+    circle(this.pos.x+80, this.pos.y+100, 10);
     
     //Windows
     fill(199, 242, 240);
-    rect(215, 350, 40, 60);
-    rect(345, 350, 40, 60);
+    rect(this.pos.x+15, this.pos.y+50, 40, 60);
+    rect(this.pos.x+145, this.pos.y+50, 40, 60);
   }
   
   void drawBrokenHouse() {

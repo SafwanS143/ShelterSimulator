@@ -79,6 +79,11 @@ public void disasterSeveritySlider(GSlider source, GEvent event) { //_CODE_:disa
   //println("disasterSeverity - GSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:disasterSeverity:262648:
 
+public void PlayButton(GButton source, GEvent event) { //_CODE_:Play:279607:
+  play = true;
+  Play.setVisible(false);
+} //_CODE_:Play:279607:
+
 
 
 // Create all the GUI controls. 
@@ -166,6 +171,10 @@ public void createGUI(){
   label9.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label9.setText("Disaster Severity");
   label9.setOpaque(false);
+  Play = new GButton(window1, 144, 398, 80, 30);
+  Play.setText("Play");
+  Play.setLocalColorScheme(GCScheme.GOLD_SCHEME);
+  Play.addEventHandler(this, "PlayButton");
   window1.loop();
 }
 
@@ -188,3 +197,4 @@ GDropList naturalDisaster;
 GLabel label8; 
 GSlider disasterSeverity; 
 GLabel label9; 
+GButton Play; 
