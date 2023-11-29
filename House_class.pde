@@ -31,6 +31,7 @@ class House extends Shelter{
     fill(199, 242, 240);
     rect(this.pos.x+15, this.pos.y+50, 40, 60);
     rect(this.pos.x+145, this.pos.y+50, 40, 60);
+    circle(this.pos.x+100, this.pos.y-40, 40);
   }
   
   void drawBrokenHouse() {

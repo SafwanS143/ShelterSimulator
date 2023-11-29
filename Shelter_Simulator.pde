@@ -14,6 +14,7 @@ boolean play = false;
 int timer = 0;
 int fps = 60;
 
+
 Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House firstHouse = new House("Brick", 50);
 ThreeStory threeStory = new ThreeStory("Brick", 50);
