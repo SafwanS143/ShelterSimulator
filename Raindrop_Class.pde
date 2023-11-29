@@ -4,7 +4,16 @@ class Raindrop {
   color colour;
   
   Raindrop(color c) {
-    this.pos = new PVector(random(-100, 700), -100);
+    int xStart, xEnd;
+    if(temp > 0) {
+      xStart = 100;
+      xEnd = 1000;
+    }
+    else {
+      xStart = 0;
+      xEnd = 600;
+    }
+    this.pos = new PVector(random(xStart, xEnd), -300);
     this.d = random(3, 5);
     this.colour = c;
   }
@@ -12,7 +21,13 @@ class Raindrop {
   void drawRaindrop() {
     noStroke();
     fill(this.colour);
-    circle(this.pos.x, this.pos.y, this.d);
+    if(temp > 0) {
+      rotate(radians(30));
+      ellipse(this.pos.x, this.pos.y, this.d, this.d + 7);
+      resetMatrix();
+    }
+    else 
+      circle(this.pos.x, this.pos.y, this.d);
     stroke(0);
   }
   

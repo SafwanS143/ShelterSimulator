@@ -99,7 +99,7 @@ void drawRain() {
     for(Raindrop r: rain) {
       if(temp > 0) {
         r.raindropColourUpdate(0,0,255);
-        rainSpeed = new PVector(-5, 20);
+        rainSpeed = new PVector(-5, 10 + (precipitationValue / 5.0));
       }
       
       else {
