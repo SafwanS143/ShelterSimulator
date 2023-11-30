@@ -14,10 +14,9 @@ boolean play = false;
 int timer = 0;
 int fps = 60;
 
-float xTsunami = -300;
-float yTsunami = 200;
+float xTsunami = -800;
 float tsunamiSpeed = 12;
-PImage tsunami; 
+PImage tsunami;
 
 Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House firstHouse = new House("Brick", 50);
@@ -29,7 +28,8 @@ void setup() {
   size(600, 600);
   frameRate(fps);
   
-  tsunami = loadImage("wave.png");
+  tsunami = loadImage("tsunami.png");
+  tsunami.resize(1150, 0);
   
   createGUI();
 
