@@ -1,12 +1,14 @@
 void naturalDisasters() {
   // Applies chosen natural disaster for 10 seconds
   if(play) {
-    if(naturalDisasterChosen == 1)
+    if(naturalDisasterChosen == 1) {
       earthquake();
-   
+      timerEnd = 600;
+    }
    
     else if(naturalDisasterChosen == 2) {
       tsunami();
+      timerEnd = 200;
     }
    
     else if(naturalDisasterChosen == 3) {
@@ -15,10 +17,11 @@ void naturalDisasters() {
    
     timer++;
    
-    if(timer == 600) {
+    if(timer == timerEnd) {
       play = false;
       Play.setVisible(true);
       timer = 0;
+      xTsunami = -800;
     }
   }
 }

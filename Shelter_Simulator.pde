@@ -13,6 +13,7 @@ PVector ground = new PVector(-200, 350);
 boolean play = false;
 int timer = 0;
 int fps = 60;
+int timerEnd = 600;
 
 float xTsunami = -800;
 float tsunamiSpeed = 12;

@@ -1,4 +1,4 @@
-class House extends Shelter{
+class House extends Shelter {
   
   
   House(String m, int fs) {
