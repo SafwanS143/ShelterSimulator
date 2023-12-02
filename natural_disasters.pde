@@ -13,6 +13,7 @@ void naturalDisasters() {
    
     else if(naturalDisasterChosen == 3) {
       tornado();
+      timerEnd = 200;
     }
    
     timer++;
@@ -21,7 +22,9 @@ void naturalDisasters() {
       play = false;
       Play.setVisible(true);
       timer = 0;
-      xTsunami = -800;
+      xTsunami = -500;
+      xTornado = -800;
+      yTornado = 50;
     }
   }
 }
@@ -54,9 +57,14 @@ void earthquake() {
 
 
 void tsunami() {
-  image(tsunami, xTsunami, 0);
+  image(tsunami, xTsunami, -5);
 
-  xTsunami += tsunamiSpeed; 
+  xTsunami += 12; 
 }
 
-void tornado() {}
+void tornado() {
+  image(tornado, xTornado, yTornado);
+  
+  xTornado += 10;
+  yTornado += random(-8, 8);
+}

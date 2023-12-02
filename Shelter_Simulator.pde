@@ -16,8 +16,11 @@ int fps = 60;
 int timerEnd = 600;
 
 float xTsunami = -800;
-float tsunamiSpeed = 12;
 PImage tsunami;
+
+float xTornado = -500;
+float yTornado = 50;
+PImage tornado;
 
 Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House firstHouse = new House("Brick", 50);
@@ -31,6 +34,9 @@ void setup() {
   
   tsunami = loadImage("tsunami.png");
   tsunami.resize(1150, 0);
+  
+  tornado = loadImage("tornado.png");
+  tornado.resize(500, 0);
   
   createGUI();
 
@@ -46,25 +52,7 @@ void draw() {
     fill(108, 209, 0);
   rect(ground.x, ground.y, 1000, 650); // Grass Ground
   
-  // Draws selected building
-  if(shelterChosen == 0) {
-    tent.drawTent();
-  }
-  
-  else if(shelterChosen == 1) {
-    firstHouse.drawHouse();
-    //firstHouse.drawBrokenHouse();
-  }
-  
-  else if(shelterChosen == 2) {
-    threeStory.drawThreeStory();
-    //threeStory.drawBrokenThreeStory();
-  }
-  
-  else {
-    skyscraper.drawSkyscraper();
-    //skyscraper.drawBrokenSkyscraper();
-  }
+  drawBuilding();
   
   drawRain();
   
@@ -140,5 +128,27 @@ void setVisibility() { //Sets visibility of GUI buttons
     Material.setVisible(true);
     label2.setVisible(true);
     label4.setText("Foundation Strength");
+  }
+}
+
+void drawBuilding() {
+  // Draws selected building
+  if(shelterChosen == 0) {
+    tent.drawTent();
+  }
+  
+  else if(shelterChosen == 1) {
+    firstHouse.drawHouse();
+    //firstHouse.drawBrokenHouse();
+  }
+  
+  else if(shelterChosen == 2) {
+    threeStory.drawThreeStory();
+    //threeStory.drawBrokenThreeStory();
+  }
+  
+  else {
+    skyscraper.drawSkyscraper();
+    //skyscraper.drawBrokenSkyscraper();
   }
 }

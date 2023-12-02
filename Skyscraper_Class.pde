@@ -1,16 +1,22 @@
 class Skyscraper extends Shelter {
-
+  int numPieces = 20;
+  float[] size = new float[numPieces];
+  PVector[] pieces = new PVector[numPieces];
+  PVector[] velocity = new PVector[numPieces];
+  
   Skyscraper(String m, int fs) {
     super(m, fs);
     
+    this.pos = new PVector(270, 75);
+
     //Broken building pieces
     for (int i = 0; i < numPieces; i++) { 
-      pieces[i] = new PVector(random(250, 365), random(25, 400));
+      pieces[i] = new PVector(random(this.pos.x-20, this.pos.x+95), random(this.pos.y-50, this.pos.y+325));
       size[i] = random(35, 45);
       velocity[i] = new PVector(random(-3, 2),random(13, 18));
     }  
     
-    this.pos = new PVector(270, 75);
+    
   }
   
   

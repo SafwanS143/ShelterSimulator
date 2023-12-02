@@ -1,16 +1,19 @@
 class ThreeStory extends Shelter {
+  int numPieces = 40;
+  float[] size = new float[numPieces];
+  PVector[] pieces = new PVector[numPieces];
+  PVector[] velocity = new PVector[numPieces];
   
   ThreeStory(String m, int fs) {
     super(m, fs);
-
+    this.pos = new PVector(50, 100);
+    
     //Broken building pieces
     for (int i = 0; i < numPieces; i++) { 
-      pieces[i] = new PVector(random(50, 550), random(150, 350));
+      pieces[i] = new PVector(random(this.pos.x, this.pos.x+500), random(this.pos.y+50, this.pos.y+250));
       size[i] = random(35, 45);
       velocity[i] = new PVector(random(-3, 2),random(13, 18));
     }
-    
-    this.pos = new PVector(50, 100);
   }
   
   void drawThreeStory() {

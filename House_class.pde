@@ -1,17 +1,20 @@
 class House extends Shelter {
-  
+  int numPieces = 18;
+  float[] size = new float[numPieces];
+  PVector[] pieces = new PVector[numPieces];
+  PVector[] velocity = new PVector[numPieces];
   
   House(String m, int fs) {
     super(m, fs);
 
+    this.pos = new PVector(200, 300);
+
     //Broken house pieces
     for (int i = 0; i < numPieces; i++) { 
-      pieces[i] = new PVector(random(200, 350), random(180, 380));
+      pieces[i] = new PVector(random(this.pos.x, this.pos.x + 150), random(this.pos.y - 120, this.pos.y - 80));
       size[i] = random(40, 55);
-      velocity[i] = new PVector(0, random(10, 15));
+      velocity[i] = new PVector(random(-3, 3), random(10, 15));
     }
-    
-    this.pos = new PVector(200, 300);
   }
   
   

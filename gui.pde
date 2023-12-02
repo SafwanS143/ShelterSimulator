@@ -63,12 +63,13 @@ public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalD
     
   else {
     disasterSelected = true;
+    
     if (naturalDisaster.getSelectedText().equals("Earthquake")) 
       naturalDisasterChosen = 1;
-      
+        
     else if (naturalDisaster.getSelectedText().equals("Tsunami")) 
       naturalDisasterChosen = 2;
-      
+        
     else if (naturalDisaster.getSelectedText().equals("Tornado"))
       naturalDisasterChosen = 3;
   }
