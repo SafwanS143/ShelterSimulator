@@ -21,20 +21,40 @@ class House extends Shelter {
   // Methods 
   void drawHouse() {
     fill(this.colour);
-    rect(this.pos.x, this.pos.y, 200, 150);
-    triangle(this.pos.x-30, this.pos.y, this.pos.x+100, this.pos.y-100, this.pos.x+230, this.pos.y);
+    rect(this.pos.x-100, this.pos.y-100, 300, 250);
+    
+    //Roof
+    triangle(this.pos.x-130, this.pos.y-100, this.pos.x+50, this.pos.y-250, this.pos.x+230, this.pos.y-100);
+    triangle(this.pos.x, this.pos.y-100, this.pos.x+115, this.pos.y-195, this.pos.x+230, this.pos.y-100);
+
+    //driveway
+    fill(175,175,175);
+    rect(this.pos.x+15,this.pos.y+150,180,500);
     
     //Door
     fill(209, 121, 56);
-    rect(this.pos.x+70, this.pos.y+50, 60, 100);
+    rect(this.pos.x-85, this.pos.y+20, 60, 100);
     fill(250, 181, 20);
-    circle(this.pos.x+80, this.pos.y+100, 10);
+    circle(this.pos.x-75, this.pos.y+70, 10);
+    
+    //Porch
+    fill(120,120,120);
+    rect(this.pos.x-110,this.pos.y+120,120,30);
+    
+    //Garage Door
+    fill(50, 50, 50);
+    rect(this.pos.x+15, this.pos.y+50, 180, 100);
+    fill(120, 120, 120);
+    rect(this.pos.x+20, this.pos.y+55, 170, 20);
     
     //Windows
     fill(199, 242, 240);
-    rect(this.pos.x+15, this.pos.y+50, 40, 60);
-    rect(this.pos.x+145, this.pos.y+50, 40, 60);
-    circle(this.pos.x+100, this.pos.y-40, 40);
+    circle(this.pos.x+120, this.pos.y-135, 25);
+    circle(this.pos.x+50, this.pos.y-200, 40);
+    rect(this.pos.x+35, this.pos.y-70, 150, 60);
+    rect(this.pos.x-80, this.pos.y-80, 50, 70);
+
+
   }
   
   void drawBrokenHouse() {
