@@ -11,15 +11,11 @@ class Tent {
   
   void drawTent() {
     fill(219, 7, 7);
+    stroke(0,0,0);
     triangle(this.pos.x, this.pos.y, this.pos.x+110, this.pos.y-200, this.pos.x+220, this.pos.y);
-    strokeWeight(6);
-    stroke(131, 39, 22);
-    noStroke();
-    fill(0,0,0);
-    triangle(this.pos.x+90,this.pos.y,this.pos.x+110,this.pos.y-200,this.pos.x+130,this.pos.y);
+    line(this.pos.x-100,this.pos.y,this.pos.x+110,this.pos.y-200);
+    line(this.pos.x+320,this.pos.y,this.pos.x+110,this.pos.y-200);
     
-    stroke(0);
-    strokeWeight(1);
   }
   
   void updateTent(int fs) {
