@@ -180,7 +180,6 @@ void reset() {
   timer = 0;
   xTsunami = -1000;
   xTornado = -500;
-  yTornado = 50;
   
   //Resets structures
   house.resetHouse();

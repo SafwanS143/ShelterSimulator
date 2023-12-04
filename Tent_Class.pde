@@ -17,7 +17,8 @@ class Tent {
     line(this.pos.x+320,this.pos.y+50,this.pos.x+110,this.pos.y-200);
     line(this.pos.x-100,this.pos.y-50,this.pos.x+110,this.pos.y-200);
     line(this.pos.x+320,this.pos.y-50,this.pos.x+110,this.pos.y-200);
-    
+    fill(0);
+    triangle(this.pos.x+110,this.pos.y-190,this.pos.x+100,this.pos.y-10,this.pos.x+120,this.pos.y-10);
   }
   
   void updateTent(int fs) {
