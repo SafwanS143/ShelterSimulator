@@ -14,7 +14,7 @@ void naturalDisasters() {
     }
    
     else if(naturalDisasterChosen == 3) {
-      tornado();
+      tornado(timer);
       timerEnd = 200;
     }
    
@@ -59,11 +59,13 @@ void tsunami() {
   xTsunami += 12; 
 }
 
-void tornado() {
-  image(tornado, xTornado, yTornado);
+void tornado(int i) {
+  if(i % 2 == 0)
+    image(tornado, xTornado, yTornado);
+  else
+    image(tornadoFlipped, xTornado, yTornado);
   
   xTornado += 10;
-  yTornado += random(-8, 8);
 }
 
 void checkDestruction() {
