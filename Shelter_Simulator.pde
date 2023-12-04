@@ -1,4 +1,3 @@
-
 import g4p_controls.*;
 
 // Global Variables
@@ -12,19 +11,22 @@ ArrayList<Raindrop> rain = new ArrayList();
 PVector rainSpeed = new PVector(-5, 20);
 PVector ground = new PVector(-200, 350);
 boolean play = false;
+boolean reset = false;
 int timer = 0;
 int fps = 60;
 int timerEnd = 600;
+boolean shelterSurvive = true;
 
-float xTsunami = -800;
+float xTsunami = -1000;
 PImage tsunami;
 
 float xTornado = -500;
-float yTornado = 50;
+float yTornado = -150;
 PImage tornado;
+PImage tornadoFlipped; 
 
 Skyscraper skyscraper = new Skyscraper("Brick", 50);
-House firstHouse = new House("Brick", 50);
+House house = new House("Brick", 50);
 ThreeStory threeStory = new ThreeStory("Brick", 50);
 Tent tent = new Tent(50);
 
@@ -37,7 +39,10 @@ void setup() {
   tsunami.resize(1150, 0);
   
   tornado = loadImage("tornado.png");
-  tornado.resize(500, 0);
+  tornado.resize(800, 0);
+  tornadoFlipped = loadImage("tornadoFlipped.png");
+  tornadoFlipped.resize(800, 0);
+  
   
   createGUI();
 
@@ -54,9 +59,7 @@ void draw() {
   rect(ground.x, ground.y, 1000, 650); // Grass Ground
   
   drawBuilding();
-  
   drawRain();
-  
   naturalDisasters();
 }
 
@@ -67,7 +70,7 @@ void updateBuilding(String a, int b) {
   }
   
   else if(shelterChosen == 1) {
-    firstHouse.updateHouse(a, b);
+    house.updateHouse(a, b);
   }
   
   else if(shelterChosen == 2) {
@@ -135,21 +138,62 @@ void setVisibility() { //Sets visibility of GUI buttons
 void drawBuilding() {
   // Draws selected building
   if(shelterChosen == 0) {
-    tent.drawTent();
+    if (shelterSurvive)
+      tent.drawTent();
+    //else
+    //draw broken tent
   }
   
   else if(shelterChosen == 1) {
-    firstHouse.drawHouse();
-    //firstHouse.drawBrokenHouse();
+    if (shelterSurvive)
+      house.drawHouse();
+    else
+      house.drawBrokenHouse();
   }
   
   else if(shelterChosen == 2) {
-    threeStory.drawThreeStory();
-    //threeStory.drawBrokenThreeStory();
+    if (shelterSurvive)
+      threeStory.drawThreeStory();
+    else
+      threeStory.drawBrokenThreeStory();
   }
   
   else {
-    skyscraper.drawSkyscraper();
-    //skyscraper.drawBrokenSkyscraper();
+    if (shelterSurvive)
+      skyscraper.drawSkyscraper();
+    else
+      skyscraper.drawBrokenSkyscraper();
   }
+}
+
+void reset() {
+  shelterChosen = 1;
+  naturalDisasterChosen = 0;
+  disasterSelected = false;
+  precipitationValue = 0;
+  temp = 20;
+  shelterSurvive = true;
+
+  play = false;
+  reset = false;
+
+  timer = 0;
+  xTsunami = -1000;
+  xTornado = -500;
+  yTornado = 50;
+  
+  //Resets structures
+  house.resetHouse();
+  threeStory.resetThreeStory();
+  skyscraper.resetSkyscraper();
+  tent.resetTent();
+  
+  //Sets GUI sliders back to normal
+  precipitation.setValue(0);
+  FoundationStrength.setValue(50);
+  temperature.setValue(20);
+  disasterSeverity.setValue(1);
+  Material.setSelected(2);
+  shelterType.setSelected(1);
+  naturalDisaster.setSelected(0);
 }

@@ -25,5 +25,8 @@ class Tent {
       
     this.overallStrength = this.foundationStrength * 0.4;
   }
-  
+
+  void resetTent() {
+    this.pos = new PVector(50, 100);  
+  }
 }

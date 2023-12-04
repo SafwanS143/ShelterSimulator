@@ -4,7 +4,6 @@ class Shelter {
   int foundationStrength;
   float overallStrength;
   color colour;
-  int endHeight;
   PVector pos;
 
   
@@ -45,6 +44,5 @@ class Shelter {
       
     this.overallStrength = s * 0.6 + this.foundationStrength * 0.4;
   }
-  
   
 }

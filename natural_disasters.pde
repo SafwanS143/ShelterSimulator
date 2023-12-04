@@ -1,6 +1,8 @@
 void naturalDisasters() {
   // Applies chosen natural disaster for 10 seconds
-  if(play) {
+  if(play && !reset) {
+    Play.setVisible(false);
+    checkDestruction();
     if(naturalDisasterChosen == 1) {
       earthquake();
       timerEnd = 600;
@@ -12,7 +14,7 @@ void naturalDisasters() {
     }
    
     else if(naturalDisasterChosen == 3) {
-      tornado();
+      tornado(timer);
       timerEnd = 200;
     }
    
@@ -20,16 +22,11 @@ void naturalDisasters() {
    
     if(timer == timerEnd) {
       play = false;
+      reset = true;
       Play.setVisible(true);
-      timer = 0;
-      xTsunami = -500;
-      xTornado = -800;
-      yTornado = 50;
     }
   }
 }
-
-
 
 void earthquake() {
   if(true) {
@@ -42,7 +39,7 @@ void earthquake() {
     }
    
     else if(shelterChosen == 1) {
-      firstHouse.pos.add(randomShake);
+      house.pos.add(randomShake);
     }
    
     else if(shelterChosen == 2) {
@@ -62,9 +59,28 @@ void tsunami() {
   xTsunami += 12; 
 }
 
-void tornado() {
-  image(tornado, xTornado, yTornado);
+void tornado(int i) {
+  if(i % 2 == 0)
+    image(tornado, xTornado, yTornado);
+  else
+    image(tornadoFlipped, xTornado, yTornado);
   
   xTornado += 10;
-  yTornado += random(-8, 8);
+}
+
+void checkDestruction() {
+  if (shelterChosen == 0){}
+  
+  else if (shelterChosen == 1){
+    if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x)
+      shelterSurvive = false;
+  }
+  else if (shelterChosen == 2) {
+    if (xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x)
+      shelterSurvive = false;
+  }
+  else {
+    if (xTsunami + 800 > skyscraper.pos.x || xTornado + 300 > skyscraper.pos.x) 
+      shelterSurvive = false;
+  }
 }
