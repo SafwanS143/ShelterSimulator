@@ -14,9 +14,7 @@ class Skyscraper extends Shelter {
       pieces[i] = new PVector(random(this.pos.x-20, this.pos.x+95), random(this.pos.y-50, this.pos.y+325));
       size[i] = random(35, 45);
       velocity[i] = new PVector(random(-3, 2),random(13, 18));
-    }  
-    
-    
+    }      
   }
   
   
@@ -69,5 +67,15 @@ class Skyscraper extends Shelter {
   void updateSkyscraper(String m, int fs) {
     super.updateShelter(m, fs);
   }
-  
+ 
+  void resetSkyscraper() {
+    this.colour = color(188, 74, 60); 
+    this.pos = new PVector(270, 75);
+    
+    for (int i = 0; i < numPieces; i++) { 
+      pieces[i] = new PVector(random(this.pos.x-20, this.pos.x+95), random(this.pos.y-50, this.pos.y+325));
+      size[i] = random(35, 45);
+      velocity[i] = new PVector(random(-3, 2),random(13, 18));
+    }  
+  }
 }

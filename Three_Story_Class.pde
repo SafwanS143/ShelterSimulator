@@ -58,4 +58,15 @@ class ThreeStory extends Shelter {
   void updateThreeStory(String m, int fs) {
     super.updateShelter(m, fs);
   }
+  
+  void resetThreeStory() {
+    this.colour = color(188, 74, 60); 
+    this.pos = new PVector(50, 100);
+
+    for (int i = 0; i < numPieces; i++) { 
+      pieces[i] = new PVector(random(this.pos.x, this.pos.x+500), random(this.pos.y+50, this.pos.y+250));
+      size[i] = random(35, 45);
+      velocity[i] = new PVector(random(-3, 2),random(13, 18));
+    }
+  }
 }

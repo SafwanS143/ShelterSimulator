@@ -19,70 +19,82 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
 } //_CODE_:window1:515186:
 
 public void Materials(GDropList source, GEvent event) { //_CODE_:Material:261635:
-  updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
+  if (!play && !reset)
+    updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
 } //_CODE_:Material:261635:
 
 public void foundationStrengthSlider(GSlider source, GEvent event) { //_CODE_:FoundationStrength:542419:
-  updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
+  if (!play && !reset)
+    updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
 } //_CODE_:FoundationStrength:542419:
 
 public void shelterTypeDroplist(GDropList source, GEvent event) { //_CODE_:shelterType:963827:
-
-  if(shelterType.getSelectedText().equals("Tent")) 
-    shelterChosen = 0;
+  if (!play && !reset) {
+    if(shelterType.getSelectedText().equals("Tent")) 
+      shelterChosen = 0;
   
   
-  else if(shelterType.getSelectedText().equals("House")) 
-    shelterChosen = 1;
+    else if(shelterType.getSelectedText().equals("House")) 
+      shelterChosen = 1;
   
   
-  else if(shelterType.getSelectedText().equals("3 - Story")) 
-    shelterChosen = 2;
+    else if(shelterType.getSelectedText().equals("3 - Story")) 
+      shelterChosen = 2;
   
   
-  else 
-    shelterChosen = 3;
+    else 
+      shelterChosen = 3;
     
-  updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
+    updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
+  }
   
 } //_CODE_:shelterType:963827:
 
 public void precipitationSlider(GSlider source, GEvent event) { //_CODE_:precipitation:561444:
-  precipitationValue = precipitation.getValueF();
+  if (!play && !reset)
+    precipitationValue = precipitation.getValueF();
 } //_CODE_:precipitation:561444:
 
 public void temperatureSlider(GSlider source, GEvent event) { //_CODE_:temperature:717298:
-  temp = temperature.getValueI();
+  if (!play && !reset)
+    temp = temperature.getValueI();
 } //_CODE_:temperature:717298:
 
 public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalDisaster:432509:
-  if (naturalDisaster.getSelectedText().equals("None")) {
-    disasterSelected = false;
-    naturalDisasterChosen = 0;
+  if (!play && !reset) {
+    if (naturalDisaster.getSelectedText().equals("None")) {
+      disasterSelected = false;
+      naturalDisasterChosen = 0;
+    }
+      
+    else {
+      disasterSelected = true;
+      
+      if (naturalDisaster.getSelectedText().equals("Earthquake")) 
+        naturalDisasterChosen = 1;
+          
+      else if (naturalDisaster.getSelectedText().equals("Tsunami")) 
+        naturalDisasterChosen = 2;
+          
+      else if (naturalDisaster.getSelectedText().equals("Tornado"))
+        naturalDisasterChosen = 3;
+    }
   }
-    
-  else {
-    disasterSelected = true;
-    
-    if (naturalDisaster.getSelectedText().equals("Earthquake")) 
-      naturalDisasterChosen = 1;
-        
-    else if (naturalDisaster.getSelectedText().equals("Tsunami")) 
-      naturalDisasterChosen = 2;
-        
-    else if (naturalDisaster.getSelectedText().equals("Tornado"))
-      naturalDisasterChosen = 3;
-  }
-
 } //_CODE_:naturalDisaster:432509:
 
 public void disasterSeveritySlider(GSlider source, GEvent event) { //_CODE_:disasterSeverity:262648:
-  //println("disasterSeverity - GSlider >> GEvent." + event + " @ " + millis());
+
 } //_CODE_:disasterSeverity:262648:
 
 public void PlayButton(GButton source, GEvent event) { //_CODE_:Play:279607:
-  play = true;
-  Play.setVisible(false);
+  if (reset) {
+    reset();  
+    Play.setText("Play");
+  }
+  else if (!play) {
+    play = true;
+    Play.setText("Reset");
+  }
 } //_CODE_:Play:279607:
 
 
