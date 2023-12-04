@@ -6,7 +6,6 @@ class Shelter {
   color colour;
   PVector pos;
 
-  
   Shelter(String m, int fs) {
     this.material = m;
     this.foundationStrength = fs;
@@ -14,7 +13,6 @@ class Shelter {
     this.overallStrength = 70.0 * 0.6 + this.foundationStrength * 0.4;
     
     this.colour = color(188, 74, 60);
-    
   }
   
   void updateShelter(String m, int fs) {

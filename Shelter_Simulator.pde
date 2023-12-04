@@ -41,7 +41,6 @@ void setup() {
   tornado.resize(500, 0);
   
   createGUI();
-
 }
 
 void draw() {
