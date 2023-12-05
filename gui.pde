@@ -86,8 +86,9 @@ public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalD
 } //_CODE_:naturalDisaster:432509:
 
 public void disasterSeveritySlider(GSlider source, GEvent event) { //_CODE_:disasterSeverity:262648:
-  //if (!play && !reset)
-  //  disasterStrength = 100 + (disasterSeverity.getValueI()*0.1*100);
+  if (!play && !reset)
+    disasterStrength = 50 + (disasterSeverity.getValueI()*0.1*100);
+
 } //_CODE_:disasterSeverity:262648:
 
 public void PlayButton(GButton source, GEvent event) { //_CODE_:Play:279607:

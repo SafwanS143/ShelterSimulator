@@ -6,14 +6,15 @@ class House extends Shelter {
   
   House(String m, int fs) {
     super(m, fs);
+    c = 0.7;
 
     this.pos = new PVector(200, 300);
 
     //Broken house pieces
     for (int i = 0; i < numPieces; i++) { 
-      pieces[i] = new PVector(random(this.pos.x, this.pos.x + 150), random(this.pos.y - 120, this.pos.y - 80));
+      pieces[i] = new PVector(random(this.pos.x, this.pos.x + 150), random(this.pos.y - 250, this.pos.y - 80));
       size[i] = random(40, 55);
-      velocity[i] = new PVector(random(-3, 3), random(10, 15));
+      velocity[i] = new PVector(random(-5, 5), random(10, 15));
     }
   }
   
@@ -78,9 +79,9 @@ class House extends Shelter {
     this.pos = new PVector(200, 300);
     
     for (int i = 0; i < numPieces; i++) { 
-      pieces[i] = new PVector(random(this.pos.x, this.pos.x + 150), random(this.pos.y - 120, this.pos.y - 80));
+      pieces[i] = new PVector(random(this.pos.x, this.pos.x + 150), random(this.pos.y - 250, this.pos.y - 80));
       size[i] = random(40, 55);
-      velocity[i] = new PVector(random(-3, 3), random(10, 15));
+      velocity[i] = new PVector(random(-5, 5), random(10, 15));
     }
   }
 }
