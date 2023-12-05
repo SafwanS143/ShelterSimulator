@@ -21,8 +21,9 @@ float xTsunami = -1000;
 PImage tsunami;
 
 float xTornado = -500;
-float yTornado = 50;
+float yTornado = -150;
 PImage tornado;
+PImage tornadoFlipped; 
 
 Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House house = new House("Brick", 50);
@@ -38,7 +39,10 @@ void setup() {
   tsunami.resize(1150, 0);
   
   tornado = loadImage("tornado.png");
-  tornado.resize(500, 0);
+  tornado.resize(800, 0);
+  tornadoFlipped = loadImage("tornadoFlipped.png");
+  tornadoFlipped.resize(800, 0);
+  
   
   createGUI();
 }
