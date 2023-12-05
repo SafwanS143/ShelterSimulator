@@ -2,8 +2,10 @@ import g4p_controls.*;
 
 // Global Variables
 int shelterChosen = 1;
+boolean shelterSurvive = true;
 int naturalDisasterChosen = 0;
 boolean disasterSelected = false;
+float disasterStrength = 1;
 float precipitationValue = 0;
 int temp = 20;
 color rainColour = color(0, 0, 255);
@@ -13,15 +15,13 @@ PVector ground = new PVector(-200, 350);
 boolean play = false;
 boolean reset = false;
 int timer = 0;
-int fps = 60;
 int timerEnd = 600;
-boolean shelterSurvive = true;
+int fps = 60;
 
 float xTsunami = -1000;
 PImage tsunami;
 
 float xTornado = -500;
-float yTornado = -150;
 PImage tornado;
 PImage tornadoFlipped; 
 
@@ -30,7 +30,6 @@ House house = new House("Brick", 50);
 ThreeStory threeStory = new ThreeStory("Brick", 50);
 Tent tent = new Tent(50);
 Complex townhouse = new Complex("Brick", 50);
-
 
 void setup() {
   size(600, 600);
@@ -44,9 +43,7 @@ void setup() {
   tornadoFlipped = loadImage("tornadoFlipped.png");
   tornadoFlipped.resize(800, 0);
   
-  
   createGUI();
-
 }
 
 void draw() {
@@ -145,8 +142,8 @@ void drawBuilding() {
   if(shelterChosen == 0) {
     if (shelterSurvive)
       tent.drawTent();
-    //else
-    //draw broken tent
+    else
+      tent.drawBrokenTent();
   }
   
   else if(shelterChosen == 1) {
@@ -182,6 +179,7 @@ void reset() {
   shelterChosen = 1;
   naturalDisasterChosen = 0;
   disasterSelected = false;
+  disasterStrength = 1;
   precipitationValue = 0;
   temp = 20;
   shelterSurvive = true;
@@ -190,6 +188,7 @@ void reset() {
   reset = false;
 
   timer = 0;
+  timerEnd = 600;
   xTsunami = -1000;
   xTornado = -500;
   
