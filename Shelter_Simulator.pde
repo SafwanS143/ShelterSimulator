@@ -29,6 +29,7 @@ Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House house = new House("Brick", 50);
 ThreeStory threeStory = new ThreeStory("Brick", 50);
 Tent tent = new Tent(50);
+Complex townhouse = new Complex("Brick", 50);
 
 
 void setup() {
@@ -76,8 +77,12 @@ void updateBuilding(String a, int b) {
     threeStory.updateThreeStory(a, b);
   }
   
-  else {
+  else if(shelterChosen == 3) {
     skyscraper.updateSkyscraper(a, b);
+  }
+  
+  else {
+    townhouse.updateComplex(a, b);
   }
 }
 
@@ -157,11 +162,18 @@ void drawBuilding() {
       threeStory.drawBrokenThreeStory();
   }
   
-  else {
+  else if (shelterChosen == 3) {
     if (shelterSurvive)
       skyscraper.drawSkyscraper();
     else
       skyscraper.drawBrokenSkyscraper();
+  }
+  
+  else {
+    if (shelterSurvive)
+      townhouse.drawComplex();
+    else
+      townhouse.drawBrokenComplex();
   }
 }
 
@@ -179,13 +191,13 @@ void reset() {
   timer = 0;
   xTsunami = -1000;
   xTornado = -500;
-  yTornado = 50;
   
   //Resets structures
   house.resetHouse();
   threeStory.resetThreeStory();
   skyscraper.resetSkyscraper();
   tent.resetTent();
+  townhouse.resetComplex();
   
   //Sets GUI sliders back to normal
   precipitation.setValue(0);

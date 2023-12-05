@@ -42,8 +42,11 @@ public void shelterTypeDroplist(GDropList source, GEvent event) { //_CODE_:shelt
       shelterChosen = 2;
   
   
-    else 
+    else if(shelterType.getSelectedText().equals("Skyscraper"))
       shelterChosen = 3;
+      
+    else
+      shelterChosen = 4;
     
     updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI());
   }
