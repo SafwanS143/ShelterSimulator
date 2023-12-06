@@ -1,6 +1,6 @@
 class Complex extends Shelter {
   //Broken building fields
-  int numPieces = 20;
+  int numPieces = 40;
   float[] size = new float[numPieces];
   PVector[] pieces = new PVector[numPieces];
   PVector[] velocity = new PVector[numPieces];
@@ -23,23 +23,38 @@ class Complex extends Shelter {
   void drawComplex() {
     //Base
     fill(this.colour);
-    rect(this.pos.x-100,this.pos.y,380,200);
-    triangle(this.pos.x-100,this.pos.y,this.pos.x+90,this.pos.y-200,this.pos.x+280,this.pos.y);
+    rect(this.pos.x-100, this.pos.y-100, 400, 300);
+    rect(this.pos.x-105, this.pos.y+50, 410, 15);
+    line(this.pos.x+100, this.pos.y-100, this.pos.x+100, this.pos.y+200);
 
-    //Doors
-    fill(209, 121, 56);
-    rect(this.pos.x-85, this.pos.y+100, 60, 100);
-    rect(this.pos.x+205, this.pos.y+100, 60, 100);
-    fill(250, 181, 20);
-    circle(this.pos.x-75, this.pos.y+150, 10);
-    circle(this.pos.x+255, this.pos.y+150, 10);
-    
+    //Roof
+    quad(this.pos.x-120, this.pos.y-100, this.pos.x-100, this.pos.y-230, this.pos.x+300, this.pos.y-230, this.pos.x+320, this.pos.y-100);
+    triangle(this.pos.x-90, this.pos.y-120, this.pos.x, this.pos.y-220, this.pos.x+90, this.pos.y-120);
+    triangle(this.pos.x+110, this.pos.y-120, this.pos.x+200, this.pos.y-220, this.pos.x+290, this.pos.y-120);
+  
     //Windows
     fill(199, 242, 240);
-    rect(this.pos.x+120, this.pos.y+45, 60, 110, 10);
-    rect(this.pos.x, this.pos.y+45, 60, 110, 10);
-    circle(this.pos.x+20,this.pos.y-50,60);
-    circle(this.pos.x+160,this.pos.y-50,60);
+    rect(this.pos.x+120, this.pos.y+80, 60, 100); //Bottom
+    rect(this.pos.x+20, this.pos.y+80, 60, 100);
+    rect(this.pos.x-80, this.pos.y-70, 70, 100); //Top
+    rect(this.pos.x+10, this.pos.y-70, 70, 100);
+    rect(this.pos.x+120, this.pos.y-70, 70, 100);
+    rect(this.pos.x+210, this.pos.y-70, 70, 100);
+    circle(this.pos.x, this.pos.y-160, 40); //Roof
+    circle(this.pos.x+200, this.pos.y-160, 40);
+    
+    //Awning
+    fill(this.colour);
+    quad(this.pos.x+110, this.pos.y+110, this.pos.x+120, this.pos.y+80, this.pos.x+180, this.pos.y+80, this.pos.x+190, this.pos.y+110);
+    quad(this.pos.x+10, this.pos.y+110, this.pos.x+20, this.pos.y+80, this.pos.x+80, this.pos.y+80, this.pos.x+90, this.pos.y+110);
+    
+    //Doors
+    fill(209, 121, 56);
+    rect(this.pos.x-65, this.pos.y+100, 60, 100);
+    rect(this.pos.x+205, this.pos.y+100, 60, 100);
+    fill(250, 181, 20);
+    circle(this.pos.x-55, this.pos.y+150, 10);
+    circle(this.pos.x+215, this.pos.y+150, 10);
   }
   
   void drawBrokenComplex() {
