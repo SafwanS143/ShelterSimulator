@@ -61,33 +61,26 @@ void tsunami() {
 
 void tornado(int i) {
   if(i % 2 == 0)
-    image(tornado, xTornado, -150);
+    image(tornado, xTornado, yTornado);
   else
-    image(tornadoFlipped, xTornado, -150);
+    image(tornadoFlipped, xTornado, yTornado);
   
   xTornado += 10;
 }
 
 void checkDestruction() {
-  if (shelterChosen == 0) {
-    if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x)
-    shelterSurvive = false;  
-  }
+  if (shelterChosen == 0){}
   
+  else if (shelterChosen == 1){
+    if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x)
+      shelterSurvive = false;
+  }
+  else if (shelterChosen == 2) {
+    if (xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x)
+      shelterSurvive = false;
+  }
   else {
-    if (house.overallStrength <= disasterStrength || threeStory.overallStrength <= disasterStrength || skyscraper.overallStrength <= disasterStrength) {
-      if (shelterChosen == 1){
-        if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x)
-          shelterSurvive = false;
-      }
-      else if (shelterChosen == 2) {
-        if (xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x)
-          shelterSurvive = false;
-      }
-      else {
-        if (xTsunami + 800 > skyscraper.pos.x || xTornado + 300 > skyscraper.pos.x) 
-          shelterSurvive = false;
-      }
-    }
+    if (xTsunami + 800 > skyscraper.pos.x || xTornado + 300 > skyscraper.pos.x) 
+      shelterSurvive = false;
   }
 }

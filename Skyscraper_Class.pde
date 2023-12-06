@@ -6,7 +6,6 @@ class Skyscraper extends Shelter {
   
   Skyscraper(String m, int fs) {
     super(m, fs);
-    c = 0.75;
     
     this.pos = new PVector(270, 75);
 

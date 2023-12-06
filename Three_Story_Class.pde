@@ -6,8 +6,6 @@ class ThreeStory extends Shelter {
   
   ThreeStory(String m, int fs) {
     super(m, fs);
-    c = 0.725;
-    
     this.pos = new PVector(50, 100);
     
     //Broken building pieces
