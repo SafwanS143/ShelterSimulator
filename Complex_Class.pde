@@ -1,27 +1,32 @@
 class Complex extends Shelter {
-  int numPieces = 18;
+  //Broken building fields
+  int numPieces = 20;
   float[] size = new float[numPieces];
   PVector[] pieces = new PVector[numPieces];
   PVector[] velocity = new PVector[numPieces];
   
   Complex(String m, int fs) {
     super(m, fs);
+    c = 0.73; //Value that adjusts impact of foundation strength
 
     this.pos = new PVector(200, 300);
 
    // Broken building pieces
     for (int i = 0; i < numPieces; i++) { 
-      pieces[i] = new PVector(random(this.pos.x, this.pos.x+500), random(this.pos.y+50, this.pos.y+250));
+      pieces[i] = new PVector(random(this.pos.x-100, this.pos.x+300), random(this.pos.y-200, this.pos.y+250));
       size[i] = random(35, 45);
       velocity[i] = new PVector(random(-3, 2),random(13, 18));
     }
   }
   
+  //Methods
   void drawComplex() {
+    //Base
     fill(this.colour);
     rect(this.pos.x-100,this.pos.y,380,200);
     triangle(this.pos.x-100,this.pos.y,this.pos.x+90,this.pos.y-200,this.pos.x+280,this.pos.y);
 
+    //Doors
     fill(209, 121, 56);
     rect(this.pos.x-85, this.pos.y+100, 60, 100);
     rect(this.pos.x+205, this.pos.y+100, 60, 100);
@@ -35,8 +40,6 @@ class Complex extends Shelter {
     rect(this.pos.x, this.pos.y+45, 60, 110, 10);
     circle(this.pos.x+20,this.pos.y-50,60);
     circle(this.pos.x+160,this.pos.y-50,60);
-
-
   }
   
   void drawBrokenComplex() {
@@ -60,7 +63,7 @@ class Complex extends Shelter {
     this.colour = color(188, 74, 60); 
     
     for (int i = 0; i < numPieces; i++) { 
-      pieces[i] = new PVector(random(this.pos.x, this.pos.x+500), random(this.pos.y+50, this.pos.y+250));
+      pieces[i] = new PVector(random(this.pos.x-100, this.pos.x+300), random(this.pos.y-200, this.pos.y+250));
       size[i] = random(35, 45);
       velocity[i] = new PVector(random(-3, 2),random(13, 18));
     }

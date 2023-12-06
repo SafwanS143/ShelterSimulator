@@ -1,4 +1,5 @@
 class ThreeStory extends Shelter {
+  //Broken building fields
   int numPieces = 40;
   float[] size = new float[numPieces];
   PVector[] pieces = new PVector[numPieces];
@@ -6,7 +7,7 @@ class ThreeStory extends Shelter {
   
   ThreeStory(String m, int fs) {
     super(m, fs);
-    c = 0.725;
+    c = 0.725; //Value that adjusts impact of foundation strength
     
     this.pos = new PVector(50, 100);
     
@@ -19,11 +20,13 @@ class ThreeStory extends Shelter {
   }
   
   void drawThreeStory() {
+    //Base
     fill(this.colour);
     rect(this.pos.x, this.pos.y, 500, 350);
     rect(this.pos.x-10, this.pos.y-10, 520, 10);
     fill(199, 242, 240);
     
+    //Windows
     int xW;
     int yW;
     for(int i = 0; i < 7; i++) {
@@ -35,14 +38,17 @@ class ThreeStory extends Shelter {
       }
     }
     
+    //Door
     fill(209, 121, 56);
     rect(this.pos.x+210, this.pos.y+270, 80, 80);
-    line(this.pos.x+250, this.pos.y+270, this.pos.x+250, this.pos.y+350);
-    line(this.pos.x, this.pos.y+110, this.pos.x + 500, this.pos.y+110);
-    line(this.pos.x, this.pos.y+220, this.pos.x + 500, this.pos.y+220);
     fill(250, 181, 20);
     circle(this.pos.x+240, this.pos.y+320, 10);
     circle(this.pos.x+260, this.pos.y+320, 10);
+    
+    //Story separation
+    line(this.pos.x+250, this.pos.y+270, this.pos.x+250, this.pos.y+350);
+    line(this.pos.x, this.pos.y+110, this.pos.x + 500, this.pos.y+110);
+    line(this.pos.x, this.pos.y+220, this.pos.x + 500, this.pos.y+220);
   }
   
   void drawBrokenThreeStory() {

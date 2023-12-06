@@ -1,5 +1,5 @@
 void naturalDisasters() {
-  // Applies chosen natural disaster for 10 seconds
+  // Applies chosen natural disaster
   if(play && !reset) {
     Play.setVisible(false);
     checkDestruction();
@@ -77,16 +77,21 @@ void tornado(int i) {
 }
 
 void checkDestruction() {
-  if (shelterChosen == 0) {
-    if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570)
-      shelterSurvive = false;  
+  if (shelterChosen == 0) { //Tent
+    if (disasterSelected) { //Tent will collapse during natural disaster
+      if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570)
+        shelterSurvive = false;  
+    }
+    else { //Checks if tent will collapse due to precipitation
+      if (tent.foundationStrength/2 < precipitationValue && temp > 0 && timer == 570)
+        shelterSurvive = false;
+    }
   }
   
-  else {
+  else { //Checks destruction of every other building
     if (shelterChosen == 1) {
       if ((xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570) && house.overallStrength <= disasterStrength) {
         shelterSurvive = false;
-        println(house.overallStrength,disasterStrength);
       }
     }
     else if (shelterChosen == 2) {

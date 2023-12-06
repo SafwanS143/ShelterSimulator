@@ -1,4 +1,5 @@
 class House extends Shelter {
+  //Broken building fields
   int numPieces = 18;
   float[] size = new float[numPieces];
   PVector[] pieces = new PVector[numPieces];
@@ -6,11 +7,11 @@ class House extends Shelter {
   
   House(String m, int fs) {
     super(m, fs);
-    c = 0.7;
+    c = 0.75; //Value that adjusts impact of foundation strength
 
     this.pos = new PVector(200, 300);
 
-    //Broken house pieces
+    //Broken building pieces
     for (int i = 0; i < numPieces; i++) { 
       pieces[i] = new PVector(random(this.pos.x, this.pos.x + 150), random(this.pos.y - 250, this.pos.y - 80));
       size[i] = random(40, 55);
@@ -18,8 +19,9 @@ class House extends Shelter {
     }
   }
   
-  // Methods 
+  //Methods 
   void drawHouse() {
+    //Base
     fill(this.colour);
     rect(this.pos.x-50, this.pos.y-100, 300, 250);
 

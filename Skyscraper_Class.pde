@@ -1,4 +1,5 @@
 class Skyscraper extends Shelter {
+  //Broken building fields
   int numPieces = 20;
   float[] size = new float[numPieces];
   PVector[] pieces = new PVector[numPieces];
@@ -6,7 +7,7 @@ class Skyscraper extends Shelter {
   
   Skyscraper(String m, int fs) {
     super(m, fs);
-    c = 0.75;
+    c = 0.7; //Value that adjusts impact of foundation strength
     
     this.pos = new PVector(270, 75);
 
@@ -18,10 +19,9 @@ class Skyscraper extends Shelter {
     }      
   }
   
-  
   // Methods 
   void drawSkyscraper() {
-    //Building
+    //Base
     fill(this.colour);
     triangle(this.pos.x+20, this.pos.y, this.pos.x+55, this.pos.y, this.pos.x+38, this.pos.y-70);
     rect(this.pos.x, this.pos.y, 75, 25);

@@ -83,6 +83,7 @@ public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalD
       else if (naturalDisaster.getSelectedText().equals("Tornado"))
         naturalDisasterChosen = 3;
     }
+   updateBuilding(Material.getSelectedText(),FoundationStrength.getValueI()); //Updates building strengths based on disaster
   }
 } //_CODE_:naturalDisaster:432509:
 

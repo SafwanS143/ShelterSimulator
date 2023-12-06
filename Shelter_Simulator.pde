@@ -26,6 +26,7 @@ float xTornado = -500;
 PImage tornado;
 PImage tornadoFlipped; 
 
+//Creating shelters
 Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House house = new House("Brick", 50);
 ThreeStory threeStory = new ThreeStory("Brick", 50);
@@ -47,12 +48,12 @@ void setup() {
   createGUI();
   
   // Required so that intial building functions properly
-  house.updateHouse("Brick",50);
+  house.updateHouse("Brick", 50);
 }
 
 void draw() {
   background(135, 206, 235);
-  setVisibility();
+  setVisibility(); //Sets the visibility of GUI buttons
   
   if(temp <= 0)
     fill(247, 245, 245); //Snowy ground
@@ -179,7 +180,7 @@ void drawBuilding() {
   }
 }
 
-void reset() {
+void reset() { //Resets program to original state
   shelterChosen = 1;
   naturalDisasterChosen = 0;
   disasterSelected = false;
