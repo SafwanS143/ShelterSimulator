@@ -72,6 +72,7 @@ public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalD
       
     else {
       disasterSelected = true;
+      disasterStrength = 60;
       
       if (naturalDisaster.getSelectedText().equals("Earthquake")) 
         naturalDisasterChosen = 1;
@@ -86,6 +87,12 @@ public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalD
 } //_CODE_:naturalDisaster:432509:
 
 public void disasterSeveritySlider(GSlider source, GEvent event) { //_CODE_:disasterSeverity:262648:
+  if (!play && !reset) {
+    disasterStrength = 50 + (disasterSeverity.getValueI()*10);
+    
+    tsunami.resize(1050 + disasterSeverity.getValueI() * 100, 0);
+    yTsunami = 45 - disasterSeverity.getValueI() * 50;
+  }
 
 } //_CODE_:disasterSeverity:262648:
 
@@ -96,7 +103,6 @@ public void PlayButton(GButton source, GEvent event) { //_CODE_:Play:279607:
   }
   else if (!play) {
     play = true;
-    Play.setText("Reset");
   }
 } //_CODE_:Play:279607:
 

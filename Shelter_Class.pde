@@ -5,44 +5,46 @@ class Shelter {
   float overallStrength;
   color colour;
   PVector pos;
+  float c;
 
-  
   Shelter(String m, int fs) {
     this.material = m;
     this.foundationStrength = fs;
-      
-    this.overallStrength = 70.0 * 0.6 + this.foundationStrength * 0.4;
-    
+          
     this.colour = color(188, 74, 60);
-    
   }
   
   void updateShelter(String m, int fs) {
     this.material = m;
     this.foundationStrength = fs;
-    
     float s;
+    
     if(material.equals("Metal")) {
-      s = 90.0;
       this.colour = color(197);
+      s = 70;
     }
       
     else if (material.equals("Concrete")) {
-      s = 80.0;
       this.colour = color(105);
+      if (naturalDisasterChosen == 3 || naturalDisasterChosen == 2)
+        s = 70;
+      else
+        s = 60;
     }
     
     else if (material.equals("Brick")) {
-      s = 70.0;
       this.colour = color(188, 74, 60);
+      s = 60;
     }      
     
     else { //Wood
-      s = 50.0;
       this.colour = color(191, 110, 48);
+      if (naturalDisasterChosen == 1)
+        s = 70;
+      else
+        s = 20;
     }
       
-    this.overallStrength = s * 0.6 + this.foundationStrength * 0.4;
+    this.overallStrength = (s * (1-c) + this.foundationStrength * c);
   }
-  
 }

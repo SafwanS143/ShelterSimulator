@@ -22,7 +22,10 @@ void naturalDisasters() {
    
     if(timer == timerEnd) {
       play = false;
-      reset = true;
+      if(!shelterSurvive) 
+        reset = true;
+      else
+        resetDisasters();
       Play.setVisible(true);
     }
   }
@@ -31,7 +34,8 @@ void naturalDisasters() {
 void earthquake() {
   if(true) {
     // shakes the ground and selected building by a randomly generated value
-    PVector randomShake = new PVector(int(random(-3, 3)), int(random(-2, 2)));
+    float disasterSlider = (disasterStrength - 50) / 10;
+    PVector randomShake = new PVector(int(random(-2 - disasterSlider/2, 2 + disasterSlider/2)), int(random(-2, 2)));
     ground.add(randomShake);
    
     if(shelterChosen == 0) {
@@ -46,41 +50,60 @@ void earthquake() {
       threeStory.pos.add(randomShake);
     }
    
-    else {
+    else if(shelterChosen == 3) {
       skyscraper.pos.add(randomShake);
+    }
+    
+    else {
+      townhouse.pos.add(randomShake);
     }
   }
 }
 
 
 void tsunami() {
-  image(tsunami, xTsunami, -5);
+  image(tsunami, xTsunami, yTsunami);
 
   xTsunami += 12; 
 }
 
 void tornado(int i) {
-  if(i % 2 == 0)
-    image(tornado, xTornado, yTornado);
+  if(i % 10 < 5)
+    image(tornado, xTornado, -150);
   else
-    image(tornadoFlipped, xTornado, yTornado);
+    image(tornadoFlipped, xTornado, -150);
   
   xTornado += 10;
 }
 
 void checkDestruction() {
-  if (shelterChosen == 0){}
+  if (shelterChosen == 0) {
+    if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570)
+      shelterSurvive = false;  
+  }
   
-  else if (shelterChosen == 1){
-    if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x)
-      shelterSurvive = false;
-  }
-  else if (shelterChosen == 2) {
-    if (xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x)
-      shelterSurvive = false;
-  }
   else {
-    if (xTsunami + 800 > skyscraper.pos.x || xTornado + 300 > skyscraper.pos.x) 
-      shelterSurvive = false;
+    if (shelterChosen == 1) {
+      if ((xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570) && house.overallStrength <= disasterStrength) {
+        shelterSurvive = false;
+        println(house.overallStrength,disasterStrength);
+      }
+    }
+    else if (shelterChosen == 2) {
+      if ((xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x || timer == 570) && threeStory.overallStrength <= disasterStrength)
+        shelterSurvive = false;
+    }
+    else if (shelterChosen == 3) {
+      if ((xTsunami + 800 > skyscraper.pos.x || xTornado + 300 > skyscraper.pos.x || timer == 570) && skyscraper.overallStrength <= disasterStrength) 
+        shelterSurvive = false;
+    }
+    
+    else {
+      if ((xTsunami + 800 > townhouse.pos.x || xTornado + 300 > townhouse.pos.x || timer == 570) && townhouse.overallStrength <= disasterStrength) 
+        shelterSurvive = false;
+    }
   }
+  
+  if(!shelterSurvive)
+    Play.setText("Reset");
 }
