@@ -83,8 +83,14 @@ void checkDestruction() {
         shelterSurvive = false;  
     }
     else { //Checks if tent will collapse due to precipitation
-      if (tent.foundationStrength/2 < precipitationValue && temp > 0 && timer == 570)
-        shelterSurvive = false;
+      if (temp > 0) {
+        if (tent.foundationStrength/2 < precipitationValue && timer == 570)
+          shelterSurvive = false;
+      }
+      else {
+        if (precipitationValue > 40 && tent.foundationStrength < 10 && timer == 570)  
+          shelterSurvive = false;
+      }
     }
   }
   

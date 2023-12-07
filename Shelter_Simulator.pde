@@ -90,7 +90,6 @@ void updateBuilding(String a, int b) {
 }
 
 void drawRain() {
-  
   if(random(0, 50) <= precipitationValue) {
     for(int i = 0; i < 2; i ++)
       rain.add(new Raindrop(rainColour));
@@ -148,7 +147,10 @@ void drawBuilding() {
     if (shelterSurvive)
       tent.drawTent();
     else
-      tent.drawBrokenTent();
+      if (disasterSelected)
+        tent.drawBrokenTent(); //Draws detroyed tent after natural disaster
+      else
+        tent.drawTentCollapse(); //Draws tent collapsing due to precipitation
   }
   
   else if(shelterChosen == 1) {
