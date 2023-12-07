@@ -21,6 +21,10 @@ class Skyscraper extends Shelter {
   
   // Methods 
   void drawSkyscraper() {
+    // Pavement
+    fill(100);
+    circle(this.pos.x + 38, this.pos.y + 450, 250);
+    
     //Base
     fill(this.colour);
     triangle(this.pos.x+20, this.pos.y, this.pos.x+55, this.pos.y, this.pos.x+38, this.pos.y-70);
@@ -56,9 +60,7 @@ class Skyscraper extends Shelter {
   void drawBrokenSkyscraper() {
     for (int i = 0; i < numPieces; i++){ //Draws broken pieces
       fill(this.colour);
-      square(pieces[i].x, pieces[i].y, size[i]);  
-    }
-    for (int i = 0; i < numPieces; i++) { //Animates broken pieces collapsing
+      square(pieces[i].x, pieces[i].y, size[i]); 
       if (pieces[i].y < 500) {
         pieces[i].add(velocity[i]);   
       }

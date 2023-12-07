@@ -31,7 +31,7 @@ Skyscraper skyscraper = new Skyscraper("Brick", 50);
 House house = new House("Brick", 50);
 ThreeStory threeStory = new ThreeStory("Brick", 50);
 Tent tent = new Tent(50);
-Complex townhouse = new Complex("Brick", 50);
+Complex duplex = new Complex("Brick", 50);
 
 void setup() {
   size(600, 600);
@@ -85,7 +85,7 @@ void updateBuilding(String a, int b) {
   }
   
   else {
-    townhouse.updateComplex(a, b);
+    duplex.updateComplex(a, b);
   }
 }
 
@@ -176,9 +176,9 @@ void drawBuilding() {
   
   else {
     if (shelterSurvive)
-      townhouse.drawComplex();
+      duplex.drawComplex();
     else
-      townhouse.drawBrokenComplex();
+      duplex.drawBrokenComplex();
   }
 }
 
@@ -205,7 +205,7 @@ void reset() { //Resets program to original state
   threeStory.resetThreeStory();
   skyscraper.resetSkyscraper();
   tent.resetTent();
-  townhouse.resetComplex();
+  duplex.resetComplex();
   
   //Sets GUI sliders back to normal
   precipitation.setValue(0);

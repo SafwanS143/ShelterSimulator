@@ -55,7 +55,7 @@ void earthquake() {
     }
     
     else {
-      townhouse.pos.add(randomShake);
+      duplex.pos.add(randomShake);
     }
   }
 }
@@ -110,7 +110,7 @@ void checkDestruction() {
     }
     
     else {
-      if ((xTsunami + 800 > townhouse.pos.x || xTornado + 300 > townhouse.pos.x || timer == 570) && townhouse.overallStrength <= disasterStrength) 
+      if ((xTsunami + 800 > duplex.pos.x || xTornado + 300 > duplex.pos.x || timer == 570) && duplex.overallStrength <= disasterStrength) 
         shelterSurvive = false;
     }
   }

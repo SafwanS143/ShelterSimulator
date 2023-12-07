@@ -58,14 +58,13 @@ class House extends Shelter {
   }
   
   void drawBrokenHouse() {
+    // Draws pavement
     fill(175,175,175);
     rect(this.pos.x+65,this.pos.y+150,180,500);
     
     for (int i = 0; i < numPieces; i++){ //Draws broken pieces
       fill(this.colour);
       square(pieces[i].x, pieces[i].y, size[i]);  
-    }
-    for (int i = 0; i < numPieces; i++) { //Animates broken pieces collapsing
       if (pieces[i].y < 425) {
         pieces[i].add(velocity[i]);
       }

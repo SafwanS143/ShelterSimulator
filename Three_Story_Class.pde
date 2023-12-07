@@ -20,6 +20,10 @@ class ThreeStory extends Shelter {
   }
   
   void drawThreeStory() {
+    // Pavement
+    fill(175,175,175);
+    rect(this.pos.x,this.pos.y+250,500,500);
+    
     //Base
     fill(this.colour);
     rect(this.pos.x, this.pos.y, 500, 350);
@@ -55,12 +59,14 @@ class ThreeStory extends Shelter {
     for (int i = 0; i < numPieces; i++){ //Draws broken pieces
       fill(this.colour);
       square(pieces[i].x, pieces[i].y, size[i]);  
-    }
-    for (int i = 0; i < numPieces; i++) { //Animates broken pieces collapsing
       if (pieces[i].y < 450) {
         pieces[i].add(velocity[i]);   
       }
     }
+    
+    // Pavement
+    fill(175,175,175);
+    rect(this.pos.x,this.pos.y+250,500,500);
   }
   
   void updateThreeStory(String m, int fs) {

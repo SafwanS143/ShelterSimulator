@@ -21,11 +21,15 @@ class Complex extends Shelter {
   
   //Methods
   void drawComplex() {
+    // Pavement
+    fill(175,175,175);
+    rect(this.pos.x-100,this.pos.y+50,400,500);
+    
     //Base
     fill(this.colour);
     rect(this.pos.x-100, this.pos.y-100, 400, 300);
     rect(this.pos.x-105, this.pos.y+50, 410, 15);
-    line(this.pos.x+100, this.pos.y-100, this.pos.x+100, this.pos.y+200);
+    line(this.pos.x+100, this.pos.y-100, this.pos.x+100, this.pos.y+400);
 
     //Roof
     quad(this.pos.x-120, this.pos.y-100, this.pos.x-100, this.pos.y-230, this.pos.x+300, this.pos.y-230, this.pos.x+320, this.pos.y-100);
@@ -58,11 +62,13 @@ class Complex extends Shelter {
   }
   
   void drawBrokenComplex() {
+    // Pavement
+    fill(175,175,175);
+    rect(this.pos.x-100,this.pos.y+50,400,500);
+    
     for (int i = 0; i < numPieces; i++){ //Draws broken pieces
       fill(this.colour);
       square(pieces[i].x, pieces[i].y, size[i]);  
-    }
-    for (int i = 0; i < numPieces; i++) { //Animates broken pieces collapsing
       if (pieces[i].y < 450) {
         pieces[i].add(velocity[i]);   
       }
