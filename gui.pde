@@ -72,7 +72,7 @@ public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalD
       
     else {
       disasterSelected = true;
-      disasterStrength = 60;
+      disasterStrength = 100;
       
       if (naturalDisaster.getSelectedText().equals("Earthquake")) 
         naturalDisasterChosen = 1;
@@ -89,7 +89,7 @@ public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalD
 
 public void disasterSeveritySlider(GSlider source, GEvent event) { //_CODE_:disasterSeverity:262648:
   if (!play && !reset) {
-    disasterStrength = 50 + (disasterSeverity.getValueI()*10);
+    disasterStrength = 90 + (disasterSeverity.getValueI()*10);
     
     tsunami.resize(1050 + disasterSeverity.getValueI() * 100, 0);
     yTsunami = 45 - disasterSeverity.getValueI() * 50;

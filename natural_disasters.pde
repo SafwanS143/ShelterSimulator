@@ -100,21 +100,21 @@ void checkDestruction() {
   
   else { //Checks destruction of every other building
     if (shelterChosen == 1) {
-      if ((xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570) && house.overallStrength <= disasterStrength) {
+      if ((xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570) && house.overallStrength < disasterStrength) {
         shelterSurvive = false;
       }
     }
     else if (shelterChosen == 2) {
-      if ((xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x || timer == 570) && threeStory.overallStrength <= disasterStrength)
+      if ((xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x || timer == 570) && threeStory.overallStrength < disasterStrength)
         shelterSurvive = false;
     }
     else if (shelterChosen == 3) {
-      if ((xTsunami + 800 > skyscraper.pos.x || xTornado + 300 > skyscraper.pos.x || timer == 570) && skyscraper.overallStrength <= disasterStrength) 
+      if ((xTsunami + 800 > skyscraper.pos.x || xTornado + 300 > skyscraper.pos.x || timer == 570) && skyscraper.overallStrength < disasterStrength) 
         shelterSurvive = false;
     }
     
     else {
-      if ((xTsunami + 800 > duplex.pos.x || xTornado + 300 > duplex.pos.x || timer == 570) && duplex.overallStrength <= disasterStrength) 
+      if ((xTsunami + 800 > duplex.pos.x || xTornado + 300 > duplex.pos.x || timer == 570) && duplex.overallStrength < disasterStrength) 
         shelterSurvive = false;
     }
   }

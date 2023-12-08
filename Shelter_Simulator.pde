@@ -25,8 +25,6 @@ float yTsunami = -5;
 float xTornado = -500;
 PImage tsunami, tornado, tornadoFlipped;
 
-
-
 // Creating shelter objects with initial values
 Skyscraper skyscraper = new Skyscraper("Brick", 55);
 House house = new House("Brick", 55);
