@@ -5,7 +5,7 @@ class Tent {
   float fallRate = 1;
 
   //Broken tent fields
-  int numPieces = 15;
+  int numPieces = 18;
   float[] size = new float[numPieces];
   PVector[] pieces = new PVector[numPieces];
   PVector[] velocity = new PVector[numPieces];
@@ -17,7 +17,7 @@ class Tent {
     //Broken tent pieces
     for (int i = 0; i < numPieces; i++) { 
       pieces[i] = new PVector(random(this.pos.x, this.pos.x + 150), random(this.pos.y - 250, this.pos.y - 80));
-      size[i] = random(40, 55);
+      size[i] = random(35, 50);
       velocity[i] = new PVector(random(-5, 5), random(8, 12));
     }
   }
@@ -45,10 +45,8 @@ class Tent {
     for (int i = 0; i < numPieces; i++){ //Draws broken pieces
       fill(219, 7, 7);
       square(pieces[i].x, pieces[i].y, size[i]);  
-    }
-    for (int i = 0; i < numPieces; i++) { //Animates broken pieces collapsing
       if (pieces[i].y < 425) {
-        pieces[i].add(velocity[i]);   
+        pieces[i].add(velocity[i]); //Animates broken pieces falling
       }
     }
   }
@@ -73,7 +71,7 @@ class Tent {
     this.foundationStrength = fs;
   }
 
-  void resetTent() {
+  void resetTent() { //Resets tent back to original state
     fallRate = 1;
     this.pos = new PVector(190, 450);  
     

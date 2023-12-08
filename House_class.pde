@@ -66,7 +66,7 @@ class House extends Shelter {
       fill(this.colour);
       square(pieces[i].x, pieces[i].y, size[i]);  
       if (pieces[i].y < 425) {
-        pieces[i].add(velocity[i]);
+        pieces[i].add(velocity[i]); //Animates broken pieces falling
       }
     }
   }
@@ -75,7 +75,7 @@ class House extends Shelter {
     super.updateShelter(m, fs);
   }
   
-  void resetHouse() {
+  void resetHouse() { //Resets building back to original state
     this.colour = color(188, 74, 60); 
     this.pos = new PVector(200, 300);
     

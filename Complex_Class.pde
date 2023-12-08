@@ -29,7 +29,7 @@ class Complex extends Shelter {
     fill(this.colour);
     rect(this.pos.x-100, this.pos.y-100, 400, 300);
     rect(this.pos.x-105, this.pos.y+50, 410, 15);
-    line(this.pos.x+100, this.pos.y-100, this.pos.x+100, this.pos.y+400);
+    line(this.pos.x+100, this.pos.y-100, this.pos.x+100, this.pos.y+200);
 
     //Roof
     quad(this.pos.x-120, this.pos.y-100, this.pos.x-100, this.pos.y-230, this.pos.x+300, this.pos.y-230, this.pos.x+320, this.pos.y-100);
@@ -70,7 +70,7 @@ class Complex extends Shelter {
       fill(this.colour);
       square(pieces[i].x, pieces[i].y, size[i]);  
       if (pieces[i].y < 450) {
-        pieces[i].add(velocity[i]);   
+        pieces[i].add(velocity[i]); //Animates broken pieces falling   
       }
     }
   }
@@ -79,11 +79,10 @@ class Complex extends Shelter {
     super.updateShelter(m, fs);
   }
   
-  void resetComplex() {
+  void resetComplex() { //Resets building back to original state
     this.pos = new PVector(200, 300);
-    this.colour = color(188, 74, 60); 
     
-    for (int i = 0; i < numPieces; i++) { 
+    for (int i = 0; i < numPieces; i++) {
       pieces[i] = new PVector(random(this.pos.x-100, this.pos.x+300), random(this.pos.y-200, this.pos.y+250));
       size[i] = random(35, 45);
       velocity[i] = new PVector(random(-3, 2),random(13, 18));

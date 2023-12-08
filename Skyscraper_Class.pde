@@ -22,8 +22,8 @@ class Skyscraper extends Shelter {
   // Methods 
   void drawSkyscraper() {
     // Pavement
-    fill(100);
-    circle(this.pos.x + 38, this.pos.y + 450, 250);
+    fill(175);
+    ellipse(this.pos.x+38, this.pos.y + 450, 300, 125);
     
     //Base
     fill(this.colour);
@@ -58,11 +58,14 @@ class Skyscraper extends Shelter {
   }
   
   void drawBrokenSkyscraper() {
+    fill(175); //Pavement
+    ellipse(this.pos.x+38, this.pos.y + 450, 300, 125);
+    
     for (int i = 0; i < numPieces; i++){ //Draws broken pieces
       fill(this.colour);
       square(pieces[i].x, pieces[i].y, size[i]); 
       if (pieces[i].y < 500) {
-        pieces[i].add(velocity[i]);   
+        pieces[i].add(velocity[i]); //Animates broken pieces falling   
       }
     }
   }
@@ -71,8 +74,7 @@ class Skyscraper extends Shelter {
     super.updateShelter(m, fs);
   }
  
-  void resetSkyscraper() {
-    this.colour = color(188, 74, 60); 
+  void resetSkyscraper() { //Resets building back to original state
     this.pos = new PVector(270, 75);
     
     for (int i = 0; i < numPieces; i++) { 
