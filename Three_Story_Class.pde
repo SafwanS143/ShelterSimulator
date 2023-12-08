@@ -68,7 +68,7 @@ class ThreeStory extends Shelter {
     }
   }
   
-  void updateThreeStory(String m, int fs) {
+  void updateThreeStory(String m, int fs) { // Updates the 3 - Story
     super.updateShelter(m, fs);
   }
   

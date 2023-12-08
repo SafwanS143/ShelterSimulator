@@ -70,7 +70,7 @@ class Skyscraper extends Shelter {
     }
   }
   
-  void updateSkyscraper(String m, int fs) {
+  void updateSkyscraper(String m, int fs) { // Updates the Skyscraper
     super.updateShelter(m, fs);
   }
  

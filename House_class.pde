@@ -7,7 +7,7 @@ class House extends Shelter {
   
   House(String m, int fs) {
     super(m, fs);
-    c = 0.75; //Value that adjusts impact of foundation strength
+    c = 0.75; //Value that adjusts impact of foundation and overall strength
 
     this.pos = new PVector(200, 300);
 
@@ -71,7 +71,7 @@ class House extends Shelter {
     }
   }
   
-  void updateHouse(String m, int fs) {
+  void updateHouse(String m, int fs) { // Updates the House
     super.updateShelter(m, fs);
   }
   

@@ -79,8 +79,12 @@ void tornado(int i) {
 void checkDestruction() {
   if (shelterChosen == 0) { //Tent
     if (disasterSelected) { //Tent will collapse during natural disaster
-      if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570)
+      if (xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x || timer == 570) {
         shelterSurvive = false;  
+        if(xTsunami + 800 > house.pos.x || xTornado + 300 > house.pos.x) {
+          tent.pos.add(new PVector(10, -1.5));
+        }
+      }
     }
     else { //Checks if tent will collapse due to precipitation
       if (temp > 0) {

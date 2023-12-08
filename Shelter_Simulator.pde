@@ -2,41 +2,43 @@ import g4p_controls.*;
 
 // Global Variables
 int shelterChosen = 1;
-boolean shelterSurvive = true;
 int naturalDisasterChosen = 0;
-boolean disasterSelected = false;
-float disasterStrength = 0;
-float precipitationValue = 0;
 int temp = 20;
-color rainColour = color(0, 0, 255);
-ArrayList<Raindrop> rain = new ArrayList();
-PVector rainSpeed = new PVector(-5, 20);
-PVector ground = new PVector(-200, 350);
-boolean play = false;
-boolean reset = false;
 int timer = 0;
 int timerEnd = 600;
 int fps = 60;
 
+boolean shelterSurvive = true;
+boolean disasterSelected = false;
+boolean play = false;
+boolean reset = false;
+
+color rainColour = color(0, 0, 255);
+ArrayList<Raindrop> rain = new ArrayList();
+PVector rainSpeed = new PVector(-5, 20);
+PVector ground = new PVector(-200, 350);
+
+float disasterStrength = 0;
+float precipitationValue = 0;
 float xTsunami = -1000;
 float yTsunami = -5;
-PImage tsunami;
-
 float xTornado = -500;
-PImage tornado;
-PImage tornadoFlipped; 
+PImage tsunami, tornado, tornadoFlipped;
 
-//Creating shelters
-Skyscraper skyscraper = new Skyscraper("Brick", 50);
-House house = new House("Brick", 50);
-ThreeStory threeStory = new ThreeStory("Brick", 50);
-Tent tent = new Tent(50);
-Complex duplex = new Complex("Brick", 50);
+
+
+// Creating shelter objects with initial values
+Skyscraper skyscraper = new Skyscraper("Brick", 55);
+House house = new House("Brick", 55);
+ThreeStory threeStory = new ThreeStory("Brick", 55);
+Tent tent = new Tent(55);
+Complex duplex = new Complex("Brick", 55);
 
 void setup() {
   size(600, 600);
   frameRate(fps);
   
+  // Loading images
   tsunami = loadImage("tsunami.png");
   tsunami.resize(1150, 0);
   
@@ -48,12 +50,14 @@ void setup() {
   createGUI();
   
   // Required so that intial building functions properly
-  house.updateHouse("Brick", 50);
+  house.updateHouse("Brick", 55);
 }
 
 void draw() {
   background(135, 206, 235);
-  setVisibility(); //Sets the visibility of GUI buttons
+  
+  //Sets the visibility of GUI buttons
+  setVisibility(); 
   
   if(temp <= 0)
     fill(247, 245, 245); //Snowy ground
@@ -61,6 +65,7 @@ void draw() {
     fill(108, 209, 0);
   rect(ground.x, ground.y, 1000, 650); // Grass Ground
   
+  // Draws structures, rain/snow, and natural disasters
   drawBuilding();
   drawRain();
   naturalDisasters();
@@ -68,6 +73,7 @@ void draw() {
 
 void updateBuilding(String a, int b) {
   
+  // Updates each shelter object accordingly (Used in GUI)
   if(shelterChosen == 0) {
     tent.updateTent(b);
   }
@@ -90,26 +96,31 @@ void updateBuilding(String a, int b) {
 }
 
 void drawRain() {
+  // Makes a new raindrop based on the precipitation value
   if(random(0, 50) <= precipitationValue) {
     for(int i = 0; i < 2; i ++)
       rain.add(new Raindrop(rainColour));
   }
   
+  // Sets color and adds velocity to each raindrop
   if(rain.size() > 0) {
     for(Raindrop r: rain) {
-      if(temp > 0) {
+      
+      if(temp > 0) { // Rain
         r.raindropColourUpdate(0,0,255);
         rainSpeed = new PVector(int(-(2 + precipitationValue/(100.0/3.0))), 10 + (precipitationValue / 5.0));
       }
       
-      else {
-        r.raindropColourUpdate(255,255,255);
+      else {  // Snow
+        r.raindropColourUpdate(255, 255, 255);
         rainSpeed = new PVector(random(-2, 2), 3);
       }
+      
       r.pos.add(rainSpeed);
       r.drawRaindrop();
     }
     
+    // Deletes raindrop if rain is off the screen
     for(int i = 0; i < rain.size(); i++) {
       if(rain.get(i).pos.y >= 610)
         rain.remove(i);
@@ -147,12 +158,19 @@ void drawBuilding() {
     if (shelterSurvive)
       tent.drawTent();
     else
-      if (disasterSelected)
+      if (disasterSelected && naturalDisasterChosen != 2 && naturalDisasterChosen != 3)
         tent.drawBrokenTent(); //Draws detroyed tent after natural disaster
+      
+      else if(naturalDisasterChosen == 2 || naturalDisasterChosen == 3) {  // Draws tent being blown away
+        tent.drawTent();
+      }  
+      
       else
         tent.drawTentCollapse(); //Draws tent collapsing due to precipitation
   }
   
+  
+  // Draws building or broken building
   else if(shelterChosen == 1) {
     if (shelterSurvive)
       house.drawHouse();
@@ -209,7 +227,7 @@ void reset() { //Resets program to original state
   
   //Sets GUI sliders back to normal
   precipitation.setValue(0);
-  FoundationStrength.setValue(50);
+  FoundationStrength.setValue(55);
   temperature.setValue(20);
   disasterSeverity.setValue(1);
   Material.setSelected(2);
@@ -217,7 +235,7 @@ void reset() { //Resets program to original state
   naturalDisaster.setSelected(0);
 }
 
-void resetDisasters() {
+void resetDisasters() { // Resets disasters for when the building survives
   timer = 0;
   timerEnd = 600;
   xTsunami = -1000;

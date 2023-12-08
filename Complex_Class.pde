@@ -7,7 +7,7 @@ class Complex extends Shelter {
   
   Complex(String m, int fs) {
     super(m, fs);
-    c = 0.73; //Value that adjusts impact of foundation strength
+    c = 0.73; //Value that adjusts impact of foundation and overall strength
 
     this.pos = new PVector(200, 300);
 
@@ -75,7 +75,7 @@ class Complex extends Shelter {
     }
   }
   
-  void updateComplex(String m, int fs) {
+  void updateComplex(String m, int fs) { // Updates the Complex
     super.updateShelter(m, fs);
   }
   

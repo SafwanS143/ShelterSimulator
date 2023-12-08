@@ -1,3 +1,5 @@
+// A general shelter class that is the parent class to all other buildings
+
 class Shelter {
   // Fields
   String material;

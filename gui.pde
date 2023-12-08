@@ -127,7 +127,7 @@ public void createGUI(){
   FoundationStrength = new GSlider(window1, 244, 88, 149, 40, 10.0);
   FoundationStrength.setShowValue(true);
   FoundationStrength.setShowLimits(true);
-  FoundationStrength.setLimits(50, 0, 100);
+  FoundationStrength.setLimits(55, 10, 100);
   FoundationStrength.setNumberFormat(G4P.INTEGER, 0);
   FoundationStrength.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
   FoundationStrength.setOpaque(false);
