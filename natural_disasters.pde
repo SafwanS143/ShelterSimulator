@@ -92,7 +92,7 @@ void checkDestruction() {
           shelterSurvive = false;
       }
       else {
-        if (precipitationValue > 40 && tent.foundationStrength < 10 && timer == 570)  
+        if (precipitationValue > 40 && tent.foundationStrength < 20 && timer == 570)  
           shelterSurvive = false;
       }
     }
@@ -105,8 +105,9 @@ void checkDestruction() {
       }
     }
     else if (shelterChosen == 2) {
-      if ((xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x || timer == 570) && threeStory.overallStrength < disasterStrength)
+      if ((xTsunami + 800 > threeStory.pos.x || xTornado + 300 > threeStory.pos.x || timer == 570) && threeStory.overallStrength < disasterStrength) {
         shelterSurvive = false;
+      }
     }
     else if (shelterChosen == 3) {
       if ((xTsunami + 800 > skyscraper.pos.x || xTornado + 300 > skyscraper.pos.x || timer == 570) && skyscraper.overallStrength < disasterStrength) 

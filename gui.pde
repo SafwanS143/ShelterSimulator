@@ -54,16 +54,21 @@ public void shelterTypeDroplist(GDropList source, GEvent event) { //_CODE_:shelt
 } //_CODE_:shelterType:963827:
 
 public void precipitationSlider(GSlider source, GEvent event) { //_CODE_:precipitation:561444:
+  // Sets precipitation value
   if (!play && !reset)
     precipitationValue = precipitation.getValueF();
 } //_CODE_:precipitation:561444:
 
 public void temperatureSlider(GSlider source, GEvent event) { //_CODE_:temperature:717298:
+
+  // Sets temperature value
   if (!play && !reset)
     temp = temperature.getValueI();
 } //_CODE_:temperature:717298:
 
 public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalDisaster:432509:
+
+  // Sets the selected disaster
   if (!play && !reset) {
     if (naturalDisaster.getSelectedText().equals("None")) {
       disasterSelected = false;
@@ -88,6 +93,8 @@ public void disasterDroplist(GDropList source, GEvent event) { //_CODE_:naturalD
 } //_CODE_:naturalDisaster:432509:
 
 public void disasterSeveritySlider(GSlider source, GEvent event) { //_CODE_:disasterSeverity:262648:
+
+  // Sets the severity of disaster
   if (!play && !reset) {
     disasterStrength = 90 + (disasterSeverity.getValueI()*10);
     
@@ -98,10 +105,14 @@ public void disasterSeveritySlider(GSlider source, GEvent event) { //_CODE_:disa
 } //_CODE_:disasterSeverity:262648:
 
 public void PlayButton(GButton source, GEvent event) { //_CODE_:Play:279607:
+
+  // Resets settings and changes button to play
   if (reset) {
     reset();  
     Play.setText("Play");
   }
+  
+  // Plays modulation
   else if (!play) {
     play = true;
   }
